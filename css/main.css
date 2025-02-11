@@ -864,24 +864,24 @@ i.iconfont {
   :root:not([data-user-color-scheme]) {
     --body-bg-color: #0d0e23;
     --board-bg-color: #645775;
-    --text-color: #e3f6ff;
-    --sec-text-color: #e3f6ff;
-    --post-text-color: #e3f6ff;
-    --post-heading-color: #e3f6ff;
+    --text-color: #dedede;
+    --sec-text-color: #dedede;
+    --post-text-color: #dedede;
+    --post-heading-color: #dedede;
     --post-link-color: #1589e9;
     --link-hover-color: #30a9de;
     --link-hover-bg-color: #364151;
     --line-color: #435266;
     --navbar-bg-color: #0d0e23;
-    --navbar-text-color: #d0d0d0;
-    --subtitle-color: #e3f6ff;
+    --navbar-text-color: #dedede;
+    --subtitle-color: #dedede;
     --scrollbar-color: #687582;
     --scrollbar-hover-color: #9da8b3;
     --button-bg-color: transparent;
     --button-hover-bg-color: #46647e;
     --highlight-bg-color: #303030;
     --inlinecode-bg-color: rgba(99,110,123,0.4);
-    --fold-title-color: #e3f6ff;
+    --fold-title-color: #dedede;
     --fold-border-color: #435266;
   }
   :root:not([data-user-color-scheme]) img {
@@ -902,24 +902,24 @@ i.iconfont {
   [data-user-color-scheme="dark"] {
     --body-bg-color: #0d0e23;
     --board-bg-color: #645775;
-    --text-color: #e3f6ff;
-    --sec-text-color: #e3f6ff;
-    --post-text-color: #e3f6ff;
-    --post-heading-color: #e3f6ff;
+    --text-color: #dedede;
+    --sec-text-color: #dedede;
+    --post-text-color: #dedede;
+    --post-heading-color: #dedede;
     --post-link-color: #1589e9;
     --link-hover-color: #30a9de;
     --link-hover-bg-color: #364151;
     --line-color: #435266;
     --navbar-bg-color: #0d0e23;
-    --navbar-text-color: #d0d0d0;
-    --subtitle-color: #e3f6ff;
+    --navbar-text-color: #dedede;
+    --subtitle-color: #dedede;
     --scrollbar-color: #687582;
     --scrollbar-hover-color: #9da8b3;
     --button-bg-color: transparent;
     --button-hover-bg-color: #46647e;
     --highlight-bg-color: #303030;
     --inlinecode-bg-color: rgba(99,110,123,0.4);
-    --fold-title-color: #e3f6ff;
+    --fold-title-color: #dedede;
     --fold-border-color: #435266;
   }
   [data-user-color-scheme="dark"] img {
