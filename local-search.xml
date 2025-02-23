@@ -13,14 +13,18 @@
     
     <categories>
       
-      <category>CTF漏洞类型</category>
+      <category>CTF</category>
+      
+      <category>UpLoad</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>CTF Web</tag>
+      <tag>CTF</tag>
+      
+      <tag>Web</tag>
       
     </tags>
     

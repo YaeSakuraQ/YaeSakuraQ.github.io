@@ -27,9 +27,10 @@
 <meta property="og:description" content="CTF-UpLoad文件上传漏洞总结1.0版本​	创建新的php文件，文件内容写入一句话木马：这里我的文件名用test.php 1&lt;?php eval($_POST[&#x27;ctf&#x27;]); ?&gt;  ​	修改文件后缀名为.jpg，绕过前端文件类型检测，上传。再用BurpSuite拦截发往服务器的请求，将请求内容中filename&#x3D;”test.jpg”改为filen">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-02-23T15:16:40.000Z">
-<meta property="article:modified_time" content="2025-02-23T15:38:27.917Z">
+<meta property="article:modified_time" content="2025-02-23T15:59:22.223Z">
 <meta property="article:author" content="SakuraQ">
-<meta property="article:tag" content="CTF Web">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="Web">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -323,8 +324,15 @@
     
       <span class="category-chain">
         
-  <a href="/categories/CTF%E6%BC%8F%E6%B4%9E%E7%B1%BB%E5%9E%8B/" class="category-chain-item">CTF漏洞类型</a>
+  <a href="/categories/CTF/" class="category-chain-item">CTF</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/CTF/UpLoad/" class="category-chain-item">UpLoad</a>
+  
+  
+
   
 
       </span>
@@ -338,7 +346,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/CTF-Web/" class="print-no-link">#CTF Web</a>
+        <a href="/tags/CTF/" class="print-no-link">#CTF</a>
+      
+        <a href="/tags/Web/" class="print-no-link">#Web</a>
       
     </div>
   
