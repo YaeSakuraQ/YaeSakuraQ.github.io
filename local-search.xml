@@ -4,7 +4,7 @@
   
   
   <entry>
-    <title>CTF-UpLoad漏洞</title>
+    <title>UpLoad漏洞 WP</title>
     <link href="/2025/02/23/CTF-UpLoad%E6%BC%8F%E6%B4%9E/"/>
     <url>/2025/02/23/CTF-UpLoad%E6%BC%8F%E6%B4%9E/</url>
     
@@ -14,6 +14,8 @@
     <categories>
       
       <category>CTF</category>
+      
+      <category>Web</category>
       
       <category>UpLoad</category>
       
