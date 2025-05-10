@@ -19,15 +19,15 @@
   <meta name="author" content="SakuraQ">
   <meta name="keywords" content="网络安全  Web  渗透">
   
-    <meta name="description" content="题目 12345678910111213141516171819202122232425import sympyimport randomdef myGetPrime():    A&#x3D; getPrime(513)    print(A)    B&#x3D;A-random.randint(1e3,1e5)    print(B)    return sympy.nextPrime((B!)%A)p&#x3D;my">
+    <meta name="description" content="题目代码 12345678910111213141516171819202122232425import sympyimport randomdef myGetPrime():    A&#x3D; getPrime(513)    print(A)    B&#x3D;A-random.randint(1e3,1e5)    print(B)    return sympy.nextPrime((B!)%A)p&#x3D;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="危险的RSA（XMU纳新赛）">
 <meta property="og:url" content="http://yaesakuraq.github.io/2025/05/10/%E5%8D%B1%E9%99%A9%E7%9A%84RSA/index.html">
 <meta property="og:site_name" content="SakuraQ&#39;s Blog">
-<meta property="og:description" content="题目 12345678910111213141516171819202122232425import sympyimport randomdef myGetPrime():    A&#x3D; getPrime(513)    print(A)    B&#x3D;A-random.randint(1e3,1e5)    print(B)    return sympy.nextPrime((B!)%A)p&#x3D;my">
+<meta property="og:description" content="题目代码 12345678910111213141516171819202122232425import sympyimport randomdef myGetPrime():    A&#x3D; getPrime(513)    print(A)    B&#x3D;A-random.randint(1e3,1e5)    print(B)    return sympy.nextPrime((B!)%A)p&#x3D;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-05-10T09:00:13.000Z">
-<meta property="article:modified_time" content="2025-05-10T09:49:02.893Z">
+<meta property="article:modified_time" content="2025-05-10T09:52:43.507Z">
 <meta property="article:author" content="SakuraQ">
 <meta property="article:tag" content="CTF">
 <meta property="article:tag" content="Crypto">
@@ -233,7 +233,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          437 字
+          439 字
         
       </span>
     
@@ -295,7 +295,7 @@
             
               <div class="markdown-body">
                 
-                <h1 id="题目">题目</h1>
+                <h1 id="题目代码">题目代码</h1>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sympy<br><span class="hljs-keyword">import</span> random<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">myGetPrime</span>():<br>    A= getPrime(<span class="hljs-number">513</span>)<br>    <span class="hljs-built_in">print</span>(A)<br>    B=A-random.randint(<span class="hljs-number">1e3</span>,<span class="hljs-number">1e5</span>)<br>    <span class="hljs-built_in">print</span>(B)<br>    <span class="hljs-keyword">return</span> sympy.nextPrime((B!)%A)<br>p=myGetPrime()<br><span class="hljs-comment">#A1=21856963452461630437348278434191434000066076750419027493852463513469865262064340836613831066602300959772632397773487317560339056658299954464169264467234407</span><br><span class="hljs-comment">#B1=21856963452461630437348278434191434000066076750419027493852463513469865262064340836613831066602300959772632397773487317560339056658299954464169264467140596</span><br><br>q=myGetPrime()<br><span class="hljs-comment">#A2=16466113115839228119767887899308820025749260933863446888224167169857612178664139545726340867406790754560227516013796269941438076818194617030304851858418927</span><br><span class="hljs-comment">#B2=16466113115839228119767887899308820025749260933863446888224167169857612178664139545726340867406790754560227516013796269941438076818194617030304851858351026</span><br><br>r=myGetPrime()<br><br>n=p*q*r<br><span class="hljs-comment">#n=85492663786275292159831603391083876175149354309327673008716627650718160585639723100793347534649628330416631255660901307533909900431413447524262332232659153047067908693481947121069070451562822417357656432171870951184673132554213690123308042697361969986360375060954702920656364144154145812838558365334172935931441424096270206140691814662318562696925767991937369782627908408239087358033165410020690152067715711112732252038588432896758405898709010342467882264362733</span><br>c=<span class="hljs-built_in">pow</span>(flag,e,n)<br><span class="hljs-comment">#e=0x1001</span><br><span class="hljs-comment">#c=75700883021669577739329316795450706204502635802310731477156998834710820770245219468703245302009998932067080383977560299708060476222089630209972629755965140317526034680452483360917378812244365884527186056341888615564335560765053550155758362271622330017433403027261127561225585912484777829588501213961110690451987625502701331485141639684356427316905122995759825241133872734362716041819819948645662803292418802204430874521342108413623635150475963121220095236776428</span><br><span class="hljs-comment">#so,what is the flag?</span><br></code></pre></td></tr></table></figure>
 <h1 id="解题思路">解题思路</h1>
 <h2 id="题目分析">题目分析</h2>
@@ -319,9 +319,8 @@ class="math inline"><em>A</em></span>，根据<strong>威尔逊定理</strong>�
 <p><span
 class="math display">(<em>A</em> − 1)! ≡ −1 (mod  <em>A</em>)</span></p>
 <p>因此：</p>
-<p><span class="math display">$$
-B! = \frac{(A-1)!}{(B+1)(B+2)\dots(A-1)}
-$$</span></p>
+<p><span class="math display">$$ B! =
+\frac{(A-1)!}{(B+1)(B+2)\dots(A-1)} $$</span></p>
 <p>所以：</p>
 <p><span
 class="math display"><em>B</em>! ≡ (−1) ⋅ [(<em>B</em> + 1)(<em>B</em> + 2)…(<em>A</em> − 1)]<sup>−1</sup> (mod  <em>A</em>)</span></p>
